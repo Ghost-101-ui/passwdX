@@ -4,7 +4,7 @@
 
 <p align="center">
   <b>Smart Password Analyzer &amp; Generator</b><br/>
-  <i>Built by <a href="https://github.com/Ghost-101-ui">CyberEDT</a> — All rights reserved © CyberEDT 2026</i>
+  <i>Built by <a href="[https://www.cyberedt.com/]">CyberEDT</a> — All rights reserved © CyberEDT 2026</i>
 </p>
 
 <p align="center">
