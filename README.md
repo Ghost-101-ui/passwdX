@@ -1,15 +1,10 @@
-<p align="center">
-  <img src="wwwroot/images/icons/wizard.png" width="80" alt="Wizard" />
-  &nbsp;&nbsp;&nbsp;
-  
-</p>
-
-<h1 align="center">PASSWORDX</h1>
-
+<h1 align="center">
+  🔐 PASSWORDX
+</h1>
 
 <p align="center">
   <b>Smart Password Analyzer &amp; Generator</b><br/>
-  <i>Built by <a href="[https://www.cyberedt.com]">CyberEDT</a> — All rights reserved © CyberEDT 2026</i>
+  <i>Built by <a href="https://github.com/Ghost-101-ui">CyberEDT</a> — All rights reserved © CyberEDT 2026</i>
 </p>
 
 <p align="center">
@@ -103,6 +98,10 @@ Build succeeded.
 
 ### 5. Run the Application
 
+**Option A (One-Click on Windows):**
+Simply double-click `start.bat` in the project root. It will automatically detect your .NET SDK, launch the local server, and open `http://localhost:5000` in your default browser.
+
+**Option B (CLI):**
 ```bash
 dotnet run
 ```
