@@ -1,0 +1,447 @@
+@{
+    Layout = "_Layout";
+}
+
+<!-- Main Module Containers (Loaded via AJAX / Client Navigation) -->
+<div id="moduleView">
+    <!-- Spacious Hero Analyzer View -->
+    <div id="analyzerView" class="module-section">
+        <div class="hero-analyzer-card">
+            <!-- Background Faint Space Invaders Sprite -->
+            <div class="hero-space-invaders">
+                <svg width="120" height="90" viewBox="0 0 16 12" fill="#2563EB" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="0" width="2" height="1"/>
+                    <rect x="11" y="0" width="2" height="1"/>
+                    <rect x="4" y="1" width="2" height="1"/>
+                    <rect x="10" y="1" width="2" height="1"/>
+                    <rect x="3" y="2" width="10" height="1"/>
+                    <rect x="2" y="3" width="3" height="1"/>
+                    <rect x="6" y="3" width="4" height="1"/>
+                    <rect x="11" y="3" width="3" height="1"/>
+                    <rect x="1" y="4" width="14" height="1"/>
+                    <rect x="1" y="5" width="2" height="1"/>
+                    <rect x="4" y="5" width="8" height="1"/>
+                    <rect x="13" y="5" width="2" height="1"/>
+                    <rect x="1" y="6" width="2" height="1"/>
+                    <rect x="4" y="6" width="1" height="1"/>
+                    <rect x="11" y="6" width="1" height="1"/>
+                    <rect x="13" y="6" width="2" height="1"/>
+                    <rect x="5" y="7" width="2" height="1"/>
+                    <rect x="9" y="7" width="2" height="1"/>
+                </svg>
+            </div>
+
+            <h2 class="pixel-heading" style="font-size: 1.5rem; margin-bottom: 6px; letter-spacing: -0.02em;">ANALYZE YOUR PASSWORD ⚡</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">Test your password strength against 8-bit pattern algorithms & cryptographic rules.</p>
+            
+            <div class="input-group-custom">
+                <div class="password-input-wrapper">
+                    <input type="password" id="mainPasswordInput" class="password-input" value="P@@ssw0rdX_2026!" autocomplete="off" />
+                    <button type="button" id="togglePasswordBtn" class="btn-toggle-pass" title="Show/Hide Password">🙈</button>
+                </div>
+                <button type="button" id="analyzeBtn" class="btn-pixel-analyze">ANALYZE ⚡</button>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; font-size: 0.85rem; color: #64748b;">
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <span>🔒 Safe & Private: Analyzed 100% locally in your browser session.</span>
+                </div>
+                <span id="charCountLabel" style="font-family: var(--font-inter); font-weight: 300;">15 characters</span>
+            </div>
+
+            <!-- Optional Personal Info Check -->
+            <div style="margin-top: 14px;">
+                <a href="#" id="togglePersonalInfo" style="font-size: 0.85rem; color: #2563eb; text-decoration: none; font-weight: 500;">+ Add Personal Info Check (Name, Birth Year, Pet Name)</a>
+                <div id="personalInfoContainer" style="display: none; margin-top: 8px;">
+                    <input type="text" id="personalInput" class="password-input" style="font-size: 0.95rem; padding: 10px 14px;" placeholder="e.g. John, 1995, Fluffy, Admin" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Analysis Results Dashboard with 8-Bit Pixel Progress Bar -->
+        <div id="analysisDashboard" style="margin-top: 24px;">
+            <div style="display: flex; gap: 24px; align-items: center; justify-content: space-between; background: var(--bg-card); border: 2px solid #cbd5e1; border-radius: var(--radius-main); padding: 24px; box-shadow: var(--shadow-soft);">
+                <div>
+                    <span class="pixel-badge" id="strengthBadge">MODERATE</span>
+                    <h3 class="pixel-heading" id="strengthTitle" style="font-size: 1.4rem; margin-top: 6px;">STRENGTH SCORE: <span id="scoreVal" class="score-value">60</span>/100</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 4px;" id="strengthSummary">Analyzed character entropy and pattern safety.</p>
+                </div>
+                <div style="width: 180px;">
+                    <div class="pixel-progress-track">
+                        <div id="heroScoreFill" class="pixel-progress-fill" style="width: 60%; background-color: var(--color-warning);"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Suggestions -->
+            <div id="quickSuggestionsContainer" class="module-card" style="margin-top: 20px;">
+                <h4 class="pixel-heading" style="font-size: 1rem; color: var(--color-warning); margin-bottom: 12px;">⚠️ QUICK SUGGESTIONS</h4>
+                <ul id="suggestionsList" style="padding-left: 20px; color: var(--text-main); font-size: 0.95rem; line-height: 1.6;">
+                    <li>Remove predictable keyboard sequences and character repetitions.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section: EXPLORE ANALYSIS MODULES (6 Horizontal Cards Grid) -->
+        <div style="margin-top: 28px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
+                <h3 class="pixel-heading" style="font-size: 1.1rem; color: #0f172a; letter-spacing: 0.05em;">EXPLORE ANALYSIS MODULES</h3>
+            </div>
+
+            <div class="tool-cards-grid">
+                <!-- Card 1: Generator -->
+                <div class="tool-card-box" onclick="switchModule('generator')">
+                    <div class="tool-card-icon">
+                        <img src="~/images/icons/generator_key.png" class="tool-card-icon-img" alt="Generator Key" />
+                    </div>
+                    <div class="tool-card-title">GENERATOR</div>
+                    <div class="tool-card-desc">Generate strong passwords in multiple styles</div>
+                    <div class="tool-card-arrow">→</div>
+                </div>
+
+                <!-- Card 2: Password DNA -->
+                <div class="tool-card-box" onclick="switchModule('dna')">
+                    <div class="tool-card-icon">
+                        <img src="~/images/icons/dna.png" class="tool-card-icon-img" alt="Password DNA" />
+                    </div>
+                    <div class="tool-card-title">PASSWORD DNA</div>
+                    <div class="tool-card-desc">Visualize your password strength DNA</div>
+                    <div class="tool-card-arrow">→</div>
+                </div>
+
+                <!-- Card 3: Smart Coach -->
+                <div class="tool-card-box" onclick="switchModule('coach')">
+                    <div class="tool-card-icon">
+                        <img src="~/images/icons/smart_coach.png" class="tool-card-icon-img" alt="Smart Coach" />
+                    </div>
+                    <div class="tool-card-title">SMART COACH</div>
+                    <div class="tool-card-desc">Get AI-like tips to improve your password</div>
+                    <div class="tool-card-arrow">→</div>
+                </div>
+
+                <!-- Card 4: Pattern Detection -->
+                <div class="tool-card-box" onclick="switchModule('patterns')">
+                    <div class="tool-card-icon">
+                        <img src="~/images/icons/pattern_detection.png" class="tool-card-icon-img" alt="Pattern Detection" />
+                    </div>
+                    <div class="tool-card-title">PATTERN DETECTION</div>
+                    <div class="tool-card-desc">Detect common patterns & risky combinations</div>
+                    <div class="tool-card-arrow">→</div>
+                </div>
+
+                <!-- Card 5: Crack Time -->
+                <div class="tool-card-box" onclick="switchModule('crack')">
+                    <div class="tool-card-icon">
+                        <img src="~/images/icons/crack_time.png" class="tool-card-icon-img" alt="Crack Time" />
+                    </div>
+                    <div class="tool-card-title">CRACK TIME</div>
+                    <div class="tool-card-desc">Estimate how long it takes to crack your password</div>
+                    <div class="tool-card-arrow">→</div>
+                </div>
+
+                <!-- Card 6: Scorecard -->
+                <div class="tool-card-box" onclick="switchModule('scorecard')">
+                    <div class="tool-card-icon">
+                        <img src="~/images/icons/scorecard.png" class="tool-card-icon-img" alt="Scorecard" />
+                    </div>
+                    <div class="tool-card-title">SCORECARD</div>
+                    <div class="tool-card-desc">See your security score & grade (A-F)</div>
+                    <div class="tool-card-arrow">→</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Generator View -->
+    <div id="generatorView" class="module-section" style="display: none;">
+        <div class="module-card">
+            <h2 class="pixel-heading" style="font-size: 1.4rem; margin-bottom: 16px; display:flex; align-items:center; gap:10px;"><img src="~/images/icons/generator_key.png" class="heading-icon" alt="Generator" /> SMART PASSWORD GENERATOR</h2>
+            <p style="color: var(--text-muted); margin-bottom: 24px;">Create high-entropy, customizable passwords using specialized generator styles.</p>
+
+            <div style="display: flex; gap: 12px; margin-bottom: 24px;">
+                <input type="text" id="generatedOutput" class="password-input" readonly style="font-weight: bold; background: var(--bg-main);" />
+                <button type="button" id="copyGenBtn" class="btn-pixel-analyze" style="background: var(--color-success); border-color: #000;">COPY 📋</button>
+                <button type="button" id="refreshGenBtn" class="btn-pixel-analyze">RE-GENERATE 🔄</button>
+            </div>
+
+            <!-- Options Grid -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                <div>
+                    <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 8px;">Length: <span id="genLengthVal" class="score-value">16</span> characters</label>
+                    <input type="range" id="genLengthSlider" min="6" max="64" value="16" style="width: 100%; cursor: pointer;" />
+                    
+                    <div style="margin-top: 20px;">
+                        <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 8px;">Generation Style</label>
+                        <select id="genStyleSelect" class="password-input" style="font-size: 0.95rem; padding: 10px;">
+                            <option value="Professional">Professional (Balanced & Clean)</option>
+                            <option value="Easy to Remember">Easy to Remember (Pronounceable Syllables)</option>
+                            <option value="Maximum Security">Maximum Security (Full Charset Entropy)</option>
+                            <option value="Gaming">Gaming (Gamer Tag Synthwave Style)</option>
+                            <option value="Corporate">Corporate (Enterprise Compliant, No Ambiguous Chars)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 12px; justify-content: center;">
+                    <label style="display: flex; align-items: center; gap: 10px; font-weight: 500; cursor: pointer;">
+                        <input type="checkbox" id="chkUpper" checked style="width: 18px; height: 18px;" /> Uppercase Letters (A-Z)
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 10px; font-weight: 500; cursor: pointer;">
+                        <input type="checkbox" id="chkLower" checked style="width: 18px; height: 18px;" /> Lowercase Letters (a-z)
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 10px; font-weight: 500; cursor: pointer;">
+                        <input type="checkbox" id="chkNumbers" checked style="width: 18px; height: 18px;" /> Numeric Digits (0-9)
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 10px; font-weight: 500; cursor: pointer;">
+                        <input type="checkbox" id="chkSymbols" checked style="width: 18px; height: 18px;" /> Special Symbols (!@@#$%^&*)
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Password DNA View -->
+    <div id="dnaView" class="module-section" style="display: none;">
+        <div class="module-card">
+            <h2 class="pixel-heading" style="font-size: 1.4rem; margin-bottom: 16px; display:flex; align-items:center; gap:10px;"><img src="~/images/icons/dna.png" class="heading-icon" alt="DNA" /> PASSWORD DNA ANALYSIS</h2>
+            <p style="color: var(--text-muted); margin-bottom: 24px;" id="dnaSummaryText">Visualizing cryptographic entropy and structural markers.</p>
+
+            <div id="dnaBarsContainer">
+                <!-- Dynamic DNA Progress Bars -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Smart Coach View -->
+    <div id="coachView" class="module-section" style="display: none;">
+        <div class="module-card">
+            <h2 class="pixel-heading" style="font-size: 1.4rem; margin-bottom: 16px; display:flex; align-items:center; gap:10px;"><img src="~/images/icons/smart_coach.png" class="heading-icon" alt="Smart Coach" /> SMART PASSWORD COACH</h2>
+            <p style="color: var(--text-muted); margin-bottom: 24px;" id="coachVerdict">Rule-based cyber security coaching feedback.</p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px;">
+                    <h4 style="color: #166534; margin-bottom: 10px;">✅ Positive Traits</h4>
+                    <ul id="coachPositiveList" style="padding-left: 18px; color: #15803d; line-height: 1.5;"></ul>
+                </div>
+                <div style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 16px;">
+                    <h4 style="color: #991b1b; margin-bottom: 10px;">⚠️ Weaknesses & Fixes</h4>
+                    <ul id="coachNegativeList" style="padding-left: 18px; color: #b91c1c; line-height: 1.5;"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pattern Detection View -->
+    <div id="patternsView" class="module-section" style="display: none;">
+        <div class="module-card">
+            <h2 class="pixel-heading" style="font-size: 1.4rem; margin-bottom: 16px; display:flex; align-items:center; gap:10px;"><img src="~/images/icons/pattern_detection.png" class="heading-icon" alt="Pattern Detection" /> PATTERN DETECTION CHECKLIST</h2>
+            <p style="color: var(--text-muted); margin-bottom: 24px;">Scanning for keyboard walks, identical repetitions, and l33t dictionary words.</p>
+
+            <div id="patternChecklist"></div>
+        </div>
+    </div>
+
+    <!-- Crack Time View -->
+    <div id="crackView" class="module-section" style="display: none;">
+        <div class="module-card">
+            <h2 class="pixel-heading" style="font-size: 1.4rem; margin-bottom: 16px; display:flex; align-items:center; gap:10px;"><img src="~/images/icons/crack_time.png" class="heading-icon" alt="Crack Time" /> CRACK TIME ESTIMATOR</h2>
+            <p style="color: var(--text-muted); margin-bottom: 24px;">Estimated time to compromise under different attack scenarios.</p>
+
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;" id="crackGrid"></div>
+        </div>
+    </div>
+
+    <!-- Scorecard View -->
+    <div id="scorecardView" class="module-section" style="display: none;">
+        <div class="module-card">
+            <h2 class="pixel-heading" style="font-size: 1.4rem; margin-bottom: 16px; display:flex; align-items:center; gap:10px;"><img src="~/images/icons/scorecard.png" class="heading-icon" alt="Scorecard" /> SECURITY SCORECARD</h2>
+            <p style="color: var(--text-muted); margin-bottom: 24px;">Report card grading each dimension from A+ to F.</p>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;" id="scorecardGrid"></div>
+        </div>
+    </div>
+
+    <!-- Challenge Mode View -->
+    <div id="challengeView" class="module-section" style="display: none;">
+        <div class="module-card">
+            <h2 class="pixel-heading" style="font-size: 1.4rem; margin-bottom: 16px; display:flex; align-items:center; gap:10px;"><img src="~/images/icons/challenge_mode.png" class="heading-icon" alt="Challenge Mode" /> PASSWORD CHALLENGE MODE</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <p style="color: var(--text-muted);">Complete missions to turn your weak password into a 100/100 Master Fortress!</p>
+                <div class="pixel-badge" style="font-size: 1rem; padding: 8px 16px;" id="challengeScoreBadge">SCORE: 0/100</div>
+            </div>
+
+            <div id="challengeTasksList" style="display: flex; flex-direction: column; gap: 12px;"></div>
+
+            <!-- Master Trophy Unlocked Banner -->
+            <div id="masterTrophyBox" style="display: none; margin-top: 24px; text-align: center; background: #eff6ff; border: 3px solid var(--primary-blue); border-radius: 12px; padding: 24px;">
+                <div style="font-size: 4rem; animation: pixel-pulse 1.5s infinite;">🏆</div>
+                <h3 class="pixel-heading" style="color: var(--primary-blue); margin-top: 8px;">PASSWORD MASTER UNLOCKED!</h3>
+                <p style="color: var(--text-muted); margin-top: 4px;">Achievement Unlocked: Hacker's Worst Nightmare 👾✨</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- About View -->
+    <div id="aboutView" class="module-section" style="display: none;">
+        <div class="module-card">
+            <h2 class="pixel-heading" style="font-size: 1.4rem; margin-bottom: 6px; display:flex; align-items:center; gap:10px;">
+                <img src="~/images/icons/about.png" class="heading-icon" alt="About" /> ABOUT PASSWORDX
+            </h2>
+            <p style="color: var(--text-muted); margin-bottom: 28px; font-size: 0.95rem;">
+                A local-first Smart Password Analyzer &amp; Generator — no databases, no cloud, no tracking.
+            </p>
+
+            <!-- What is PASSWORDX -->
+            <div style="margin-bottom: 28px;">
+                <h3 class="pixel-heading" style="font-size: 1.05rem; margin-bottom: 12px; color: var(--primary-blue);">🔐 WHAT IS PASSWORDX?</h3>
+                <p style="line-height: 1.8; color: var(--text-main); margin-bottom: 12px;">
+                    <strong>PASSWORDX</strong> is a production-quality, browser-based password intelligence platform. It's not a password manager — it is a
+                    <strong>real-time password strength analyzer, pattern detector, entropy calculator, and secure password generator</strong> rolled into one SaaS-grade tool.
+                </p>
+                <p style="line-height: 1.8; color: var(--text-main);">
+                    Designed with a modern <em>Notion/Linear SaaS aesthetic</em> layered over an <em>8-bit retro pixel-art</em> theme, PASSWORDX turns the often-boring topic
+                    of password security into an interactive, gamified experience that educates users through real cryptographic analysis — not guesswork.
+                </p>
+            </div>
+
+            <!-- How It Works -->
+            <div style="margin-bottom: 28px;">
+                <h3 class="pixel-heading" style="font-size: 1.05rem; margin-bottom: 16px; color: var(--primary-blue);">⚙️ HOW IT WORKS</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+
+                    <div style="background: var(--hover-light); border: 1px solid var(--hover-border); border-radius: 8px; padding: 16px;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <img src="~/images/icons/analyzer.png" class="heading-icon" alt="Analyzer" />
+                            <strong class="pixel-heading" style="font-size: 0.8rem;">PASSWORD ANALYZER</strong>
+                        </div>
+                        <p style="font-size: 0.88rem; line-height: 1.7; color: var(--text-muted);">
+                            On each keystroke, the backend computes a <strong>real entropy score</strong> using Shannon's entropy formula,
+                            checks character set diversity (uppercase, lowercase, digits, symbols), detects common dictionary words,
+                            and returns a 0–100 strength score with detailed suggestions — all via jQuery AJAX calls to the ASP.NET MVC controller.
+                        </p>
+                    </div>
+
+                    <div style="background: var(--hover-light); border: 1px solid var(--hover-border); border-radius: 8px; padding: 16px;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <img src="~/images/icons/dna.png" class="heading-icon" alt="DNA" />
+                            <strong class="pixel-heading" style="font-size: 0.8rem;">PASSWORD DNA</strong>
+                        </div>
+                        <p style="font-size: 0.88rem; line-height: 1.7; color: var(--text-muted);">
+                            Breaks down your password into 6 measurable DNA strands — <strong>Entropy, Length, Charset, Uniqueness, Complexity, and Resilience</strong>.
+                            Each dimension is scored independently and displayed as an 8-bit arcade health bar so you can pinpoint exactly which trait needs improvement.
+                        </p>
+                    </div>
+
+                    <div style="background: var(--hover-light); border: 1px solid var(--hover-border); border-radius: 8px; padding: 16px;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <img src="~/images/icons/smart_coach.png" class="heading-icon" alt="Coach" />
+                            <strong class="pixel-heading" style="font-size: 0.8rem;">SMART COACH</strong>
+                        </div>
+                        <p style="font-size: 0.88rem; line-height: 1.7; color: var(--text-muted);">
+                            A rule-based cyber-security coaching engine that categorizes your password's weaknesses into actionable coaching tips.
+                            Generates a <strong>Threat Level</strong>, a <strong>Do/Don't checklist</strong>, upgrade strategies, and a one-liner verdict — all computed server-side without any AI APIs.
+                        </p>
+                    </div>
+
+                    <div style="background: var(--hover-light); border: 1px solid var(--hover-border); border-radius: 8px; padding: 16px;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <img src="~/images/icons/pattern_detection.png" class="heading-icon" alt="Patterns" />
+                            <strong class="pixel-heading" style="font-size: 0.8rem;">PATTERN DETECTION</strong>
+                        </div>
+                        <p style="font-size: 0.88rem; line-height: 1.7; color: var(--text-muted);">
+                            Scans for 10 known vulnerability patterns including <strong>keyboard walks</strong> (qwerty, 12345),
+                            <strong>repeated character sequences</strong>, <strong>leet-speak substitutions</strong> (e.g. replacing letters with symbols),
+                            <strong>date patterns</strong>, and <strong>common name or word injections</strong>. Each pattern is graded Pass / Warn / Fail with a plain-English explanation.
+                        </p>
+                    </div>
+
+                    <div style="background: var(--hover-light); border: 1px solid var(--hover-border); border-radius: 8px; padding: 16px;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <img src="~/images/icons/crack_time.png" class="heading-icon" alt="Crack Time" />
+                            <strong class="pixel-heading" style="font-size: 0.8rem;">CRACK TIME ESTIMATOR</strong>
+                        </div>
+                        <p style="font-size: 0.88rem; line-height: 1.7; color: var(--text-muted);">
+                            Calculates realistic <strong>time-to-crack estimates</strong> across 4 attack scenarios:
+                            Online Throttled (100/hr), Online Unthrottled (10K/sec), Offline Slow Hash (1B/sec), and Offline Fast Hash (100B/sec GPU cluster).
+                            Formulas are based on real-world hash cracking benchmarks using keyspace × guesses-per-second.
+                        </p>
+                    </div>
+
+                    <div style="background: var(--hover-light); border: 1px solid var(--hover-border); border-radius: 8px; padding: 16px;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <img src="~/images/icons/scorecard.png" class="heading-icon" alt="Scorecard" />
+                            <strong class="pixel-heading" style="font-size: 0.8rem;">SECURITY SCORECARD</strong>
+                        </div>
+                        <p style="font-size: 0.88rem; line-height: 1.7; color: var(--text-muted);">
+                            Issues letter grades (A+ through F) across 6 security dimensions. Each dimension maps to a specific password quality metric —
+                            e.g., <strong>Length Grade</strong> based on character count, <strong>Entropy Grade</strong> from Shannon score,
+                            <strong>Complexity Grade</strong> from charset diversity. Gives you an instant holistic report card.
+                        </p>
+                    </div>
+
+                    <div style="background: var(--hover-light); border: 1px solid var(--hover-border); border-radius: 8px; padding: 16px;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <img src="~/images/icons/generator_key.png" class="heading-icon" alt="Generator" />
+                            <strong class="pixel-heading" style="font-size: 0.8rem;">PASSWORD GENERATOR</strong>
+                        </div>
+                        <p style="font-size: 0.88rem; line-height: 1.7; color: var(--text-muted);">
+                            Generates high-entropy passwords using 5 specialist styles: <strong>Military Fortress</strong> (max complexity),
+                            <strong>Memorable Phrase</strong> (pronounceable), <strong>PIN Code</strong>, <strong>Passphrase</strong> (word-chain), and <strong>Hacker Style</strong> (leet-speak mix).
+                            Fully server-side using C# <code>RNGCryptoServiceProvider</code>-equivalent randomness.
+                        </p>
+                    </div>
+
+                    <div style="background: var(--hover-light); border: 1px solid var(--hover-border); border-radius: 8px; padding: 16px;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <img src="~/images/icons/challenge_mode.png" class="heading-icon" alt="Challenge" />
+                            <strong class="pixel-heading" style="font-size: 0.8rem;">CHALLENGE MODE</strong>
+                        </div>
+                        <p style="font-size: 0.88rem; line-height: 1.7; color: var(--text-muted);">
+                            Gamified improvement system with 7 progressive missions. Each mission targets a specific weakness — add a symbol, reach 12 chars,
+                            avoid dictionary words, etc. Completing all missions earns you the <strong>🏆 Password Master</strong> achievement.
+                            Score is tracked session-wide and updates dynamically as you type.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Tech Stack -->
+            <div style="margin-bottom: 28px;">
+                <h3 class="pixel-heading" style="font-size: 1.05rem; margin-bottom: 16px; color: var(--primary-blue);">🛠️ TECH STACK</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <span style="background: #1e3a5f; color: #60a5fa; border: 1px solid #2563eb; padding: 6px 14px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;">ASP.NET Core MVC (.NET 8)</span>
+                    <span style="background: #1e3a5f; color: #60a5fa; border: 1px solid #2563eb; padding: 6px 14px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;">C# Backend Logic</span>
+                    <span style="background: #1a3a1f; color: #4ade80; border: 1px solid #16a34a; padding: 6px 14px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;">HTML5 + CSS3</span>
+                    <span style="background: #1a3a1f; color: #4ade80; border: 1px solid #16a34a; padding: 6px 14px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;">Vanilla JavaScript</span>
+                    <span style="background: #3a2a00; color: #fbbf24; border: 1px solid #d97706; padding: 6px 14px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;">jQuery AJAX</span>
+                    <span style="background: #3a2a00; color: #fbbf24; border: 1px solid #d97706; padding: 6px 14px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;">Shannon Entropy Formula</span>
+                    <span style="background: #3a001a; color: #f87171; border: 1px solid #dc2626; padding: 6px 14px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;">Zero SQL / Zero EF</span>
+                    <span style="background: #3a001a; color: #f87171; border: 1px solid #dc2626; padding: 6px 14px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;">Zero External APIs</span>
+                    <span style="background: #2a1a3a; color: #c084fc; border: 1px solid #9333ea; padding: 6px 14px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;">Press Start 2P + JetBrains Mono</span>
+                    <span style="background: #2a1a3a; color: #c084fc; border: 1px solid #9333ea; padding: 6px 14px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;">8-bit Pixel Art UI</span>
+                </div>
+            </div>
+
+            <!-- Privacy Promise -->
+            <div style="background: linear-gradient(135deg, #0f2027 0%, #0a1628 100%); border: 2px solid var(--primary-blue); border-radius: 10px; padding: 20px; display: flex; gap: 16px; align-items: flex-start;">
+                <div style="font-size: 2rem; flex-shrink: 0;">🔒</div>
+                <div>
+                    <strong class="pixel-heading" style="font-size: 0.9rem; color: #60a5fa; display: block; margin-bottom: 8px;">100% LOCAL &amp; PRIVATE — YOUR PASSWORD NEVER LEAVES YOUR MACHINE</strong>
+                    <p style="font-size: 0.88rem; line-height: 1.7; color: var(--text-muted); margin: 0;">
+                        PASSWORDX runs entirely on your local server. No password is ever stored, logged, transmitted to any cloud, or shared with any third-party service.
+                        There is no database, no authentication, no session persistence, and no external API call. Every computation happens in-memory on the ASP.NET MVC server
+                        running on your own machine — and is discarded the moment the request ends.
+                        <strong style="color: #4ade80;">What you type, stays with you. Always.</strong>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Version Footer -->
+            <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--hover-border); display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--text-muted);">PASSWORDX v1.0 · Built with ❤️ · ASP.NET Core 8 · Local-first</span>
+                <span class="pixel-badge" style="font-size: 0.75rem;">🧙 WIZARD APPROVED</span>
+            </div>
+        </div>
+    </div>
+</div>

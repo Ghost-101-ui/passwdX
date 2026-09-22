@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PASSWORDX - Smart Password Analyzer & Generator</title>
+    <link rel="stylesheet" href="~/Content/style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="outer-frame">
+        <!-- Top Navbar -->
+        <header class="top-navbar">
+            <div class="brand-container">
+                <a href="#" class="brand-logo" onclick="switchModule('analyzer'); return false;">
+                    <!-- Pixel Blue Lock Icon -->
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="5" y="10" width="14" height="11" rx="2" fill="#2563EB" stroke="#000000" stroke-width="2"/>
+                        <path d="M8 10V7A4 4 0 1 1 16 7V10" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="12" cy="14" r="1.5" fill="#FFFFFF"/>
+                        <rect x="11.25" y="15" width="1.5" height="3" fill="#FFFFFF"/>
+                    </svg>
+                    <div class="brand-title-box">
+                        <span class="brand-logo-text">PASSWORDX</span>
+                        <span class="brand-tagline">SMART PASSWORD ANALYZER</span>
+                    </div>
+                </a>
+            </div>
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <button id="themeToggle" class="btn-toggle-pass" style="position: static; transform: none;" title="Toggle Theme">☀️</button>
+                <span class="pixel-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    BE SAFE, STAY SECURE
+                </span>
+            </div>
+        </header>
+
+        <!-- App Container -->
+        <div class="app-container">
+            <!-- Left Sidebar -->
+            <nav class="left-sidebar">
+                <div class="sidebar-nav">
+                    <a class="sidebar-item active" id="nav-analyzer" onclick="switchModule('analyzer')">
+                        <img src="~/images/icons/analyzer.png" class="pixel-nav-icon" alt="Analyzer" />
+                        <span>ANALYZER</span>
+                    </a>
+                    <a class="sidebar-item" id="nav-generator" onclick="switchModule('generator')">
+                        <img src="~/images/icons/generator_key.png" class="pixel-nav-icon" alt="Generator" />
+                        <span>GENERATOR</span>
+                    </a>
+                    <a class="sidebar-item" id="nav-dna" onclick="switchModule('dna')">
+                        <img src="~/images/icons/dna.png" class="pixel-nav-icon" alt="DNA" />
+                        <span>PASSWORD DNA</span>
+                    </a>
+                    <a class="sidebar-item" id="nav-coach" onclick="switchModule('coach')">
+                        <img src="~/images/icons/smart_coach.png" class="pixel-nav-icon" alt="Smart Coach" />
+                        <span>SMART COACH</span>
+                    </a>
+                    <a class="sidebar-item" id="nav-patterns" onclick="switchModule('patterns')">
+                        <img src="~/images/icons/pattern_detection.png" class="pixel-nav-icon" alt="Pattern Detection" />
+                        <span>PATTERN DETECTION</span>
+                    </a>
+                    <a class="sidebar-item" id="nav-crack" onclick="switchModule('crack')">
+                        <img src="~/images/icons/crack_time.png" class="pixel-nav-icon" alt="Crack Time" />
+                        <span>CRACK TIME</span>
+                    </a>
+                    <a class="sidebar-item" id="nav-scorecard" onclick="switchModule('scorecard')">
+                        <img src="~/images/icons/scorecard.png" class="pixel-nav-icon" alt="Scorecard" />
+                        <span>SCORECARD</span>
+                    </a>
+                    <a class="sidebar-item" id="nav-challenge" onclick="switchModule('challenge')">
+                        <img src="~/images/icons/challenge_mode.png" class="pixel-nav-icon" alt="Challenge Mode" />
+                        <span>CHALLENGE MODE</span>
+                    </a>
+                    <a class="sidebar-item" id="nav-about" onclick="switchModule('about')">
+                        <img src="~/images/icons/about.png" class="pixel-nav-icon" alt="About" />
+                        <span>ABOUT</span>
+                    </a>
+                </div>
+
+                <!-- Bottom Wizard Speech Widget -->
+                <div class="sidebar-wizard-widget">
+                    <div class="speech-bubble-widget">
+                        💡 Stronger password, stronger you!
+                    </div>
+                    <!-- Pixel Wizard Character Sprite -->
+                    <img src="~/images/icons/wizard.png" class="wizard-character-img" alt="Wizard Character" />
+                </div>
+            </nav>
+
+            <!-- Main Content Area -->
+            <main class="main-content">
+                <div class="content-wrapper">
+                    @RenderBody()
+                </div>
+            </main>
+        </div>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div>© 2026 PASSWORDX &mdash; All Rights Reserved.</div>
+            <div>Built by <strong>CyberEDT</strong> &nbsp;|&nbsp; All rights are under <strong>CyberEDT</strong></div>
+        </footer>
+    </div>
+
+    <!-- Humor Popup Container -->
+    <div id="humorPopupContainer"></div>
+
+    <script src="~/Scripts/app.js"></script>
+    <script src="~/Scripts/analyzer.js"></script>
+    <script src="~/Scripts/generator.js"></script>
+    <script src="~/Scripts/challenge.js"></script>
+</body>
+</html>
