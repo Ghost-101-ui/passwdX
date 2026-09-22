@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="wwwroot/images/icons/wizard(2).svg" width="80" alt="Wizard" />
+  <img src="wwwroot/images/icons/wizard.png" width="80" alt="Wizard" />
   &nbsp;&nbsp;&nbsp;
   
 </p>
