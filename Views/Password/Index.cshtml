@@ -60,7 +60,7 @@
 
         <!-- Live Analysis Results Dashboard with 8-Bit Pixel Progress Bar -->
         <div id="analysisDashboard" style="margin-top: 24px;">
-            <div style="display: flex; gap: 24px; align-items: center; justify-content: space-between; background: var(--bg-card); border: 2px solid #cbd5e1; border-radius: var(--radius-main); padding: 24px; box-shadow: var(--shadow-soft);">
+            <div class="score-row-flex" style="background: var(--bg-card); border: 2px solid #cbd5e1; border-radius: var(--radius-main); padding: 24px; box-shadow: var(--shadow-soft);">
                 <div>
                     <span class="pixel-badge" id="strengthBadge">MODERATE</span>
                     <h3 class="pixel-heading" id="strengthTitle" style="font-size: 1.4rem; margin-top: 6px;">STRENGTH SCORE: <span id="scoreVal" class="score-value">60</span>/100</h3>
@@ -165,7 +165,7 @@
             </div>
 
             <!-- Options Grid -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+            <div class="responsive-grid-2" style="gap: 24px;">
                 <div>
                     <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 8px;">Length: <span id="genLengthVal" class="score-value">16</span> characters</label>
                     <input type="range" id="genLengthSlider" min="6" max="64" value="16" style="width: 100%; cursor: pointer;" />
@@ -218,7 +218,7 @@
             <h2 class="pixel-heading" style="font-size: 1.4rem; margin-bottom: 16px; display:flex; align-items:center; gap:10px;"><img src="~/images/icons/smart_coach.png" class="heading-icon" alt="Smart Coach" /> SMART PASSWORD COACH</h2>
             <p style="color: var(--text-muted); margin-bottom: 24px;" id="coachVerdict">Rule-based cyber security coaching feedback.</p>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="responsive-grid-2" style="gap: 20px;">
                 <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px;">
                     <h4 style="color: #166534; margin-bottom: 10px;">✅ Positive Traits</h4>
                     <ul id="coachPositiveList" style="padding-left: 18px; color: #15803d; line-height: 1.5;"></ul>
@@ -247,7 +247,7 @@
             <h2 class="pixel-heading" style="font-size: 1.4rem; margin-bottom: 16px; display:flex; align-items:center; gap:10px;"><img src="~/images/icons/crack_time.png" class="heading-icon" alt="Crack Time" /> CRACK TIME ESTIMATOR</h2>
             <p style="color: var(--text-muted); margin-bottom: 24px;">Estimated time to compromise under different attack scenarios.</p>
 
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;" id="crackGrid"></div>
+            <div class="responsive-grid-2" style="gap: 16px;" id="crackGrid"></div>
         </div>
     </div>
 
@@ -257,7 +257,7 @@
             <h2 class="pixel-heading" style="font-size: 1.4rem; margin-bottom: 16px; display:flex; align-items:center; gap:10px;"><img src="~/images/icons/scorecard.png" class="heading-icon" alt="Scorecard" /> SECURITY SCORECARD</h2>
             <p style="color: var(--text-muted); margin-bottom: 24px;">Report card grading each dimension from A+ to F.</p>
 
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;" id="scorecardGrid"></div>
+            <div class="responsive-grid-3" style="gap: 16px;" id="scorecardGrid"></div>
         </div>
     </div>
 
@@ -307,7 +307,7 @@
             <!-- How It Works -->
             <div style="margin-bottom: 28px;">
                 <h3 class="pixel-heading" style="font-size: 1.05rem; margin-bottom: 16px; color: var(--primary-blue);">⚙️ HOW IT WORKS</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                <div class="responsive-grid-2" style="gap: 14px;">
 
                     <div style="background: var(--hover-light); border: 1px solid var(--hover-border); border-radius: 8px; padding: 16px;">
                         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">

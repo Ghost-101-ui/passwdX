@@ -269,3 +269,179 @@ button, .btn-pixel-primary, .btn-toggle-pass { font-family: var(--font-inter); f
 @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes bounceIn { 0% { opacity: 0; transform: scale(0.8) translateY(20px); } 70% { transform: scale(1.05) translateY(-5px); } 100% { opacity: 1; transform: scale(1) translateY(0); } }
 @keyframes pixel-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+@keyframes slideInLeft { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+
+/* ============================================================
+   HAMBURGER BUTTON — hidden on desktop, visible on mobile
+   ============================================================ */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: 2px solid var(--primary-blue);
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+/* Mobile overlay — hidden by default */
+.mobile-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 199;
+    backdrop-filter: blur(2px);
+}
+.mobile-overlay.active { display: block; }
+
+/* Responsive grid helpers — these collapse on mobile */
+.responsive-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.responsive-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.score-row-flex   { display: flex; gap: 24px; align-items: center; justify-content: space-between; }
+
+/* ============================================================
+   MOBILE — max-width: 768px
+   All rules below only apply to phone/small-tablet screens.
+   Desktop layout above is completely untouched.
+   ============================================================ */
+@media (max-width: 768px) {
+
+    /* --- Outer frame: remove margin, allow natural scroll --- */
+    .outer-frame {
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    /* --- Navbar --- */
+    .top-navbar {
+        height: auto;
+        padding: 10px 14px;
+        flex-wrap: wrap;
+        gap: 8px;
+        position: sticky;
+        top: 0;
+        z-index: 200;
+    }
+
+    .brand-logo-text { font-size: 0.7rem; }
+    .brand-tagline   { display: none; }
+    .pixel-badge     { display: none; }
+
+    /* Show hamburger on mobile */
+    .mobile-menu-btn { display: flex; align-items: center; }
+
+    /* --- App container: stack sidebar above content --- */
+    .app-container {
+        flex-direction: column;
+        overflow: visible;
+    }
+
+    /* --- Sidebar: hidden off-screen, slides in as drawer --- */
+    .left-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 260px;
+        z-index: 200;
+        transform: translateX(-100%);
+        transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow-y: auto;
+        padding-top: 60px;
+        border-right: 2px solid var(--primary-blue);
+        box-shadow: 4px 0 24px rgba(37, 99, 235, 0.15);
+    }
+
+    .left-sidebar.sidebar-open {
+        transform: translateX(0);
+        animation: slideInLeft 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Hide wizard widget on mobile to save space */
+    .sidebar-wizard-widget { display: none; }
+
+    /* --- Main content --- */
+    .main-content {
+        padding: 16px;
+        overflow-y: visible;
+    }
+
+    /* --- Hero card --- */
+    .hero-analyzer-card { padding: 18px 16px; }
+
+    /* Hide decorative space invaders on mobile */
+    .hero-space-invaders { display: none; }
+
+    /* --- Input group: stack vertically --- */
+    .input-group-custom {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .btn-pixel-analyze { width: 100%; text-align: center; }
+    .password-input    { font-size: 1rem; padding: 12px 44px 12px 14px; }
+
+    /* --- Analysis dashboard: stack score row --- */
+    .score-row-flex {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+    .score-row-flex > div:last-child { width: 100%; }
+
+    /* --- Tool cards grid: 2 columns on mobile --- */
+    .tool-cards-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .tool-card-box   { padding: 14px 10px; }
+    .tool-card-desc  { display: none; }  /* hide desc to keep cards compact */
+
+    /* --- Module cards --- */
+    .module-card { padding: 18px 16px; }
+
+    /* --- Responsive grid helpers collapse to 1 column --- */
+    .responsive-grid-2 { grid-template-columns: 1fr; gap: 14px; }
+    .responsive-grid-3 { grid-template-columns: 1fr; gap: 14px; }
+
+    /* --- Generator buttons: stack --- */
+    #generatorView .input-group-custom,
+    #generatorView > .module-card > div:first-of-type {
+        flex-direction: column;
+        gap: 10px;
+    }
+    #generatorView .btn-pixel-analyze { width: 100%; }
+
+    /* --- Footer: center and wrap --- */
+    .app-footer {
+        height: auto;
+        flex-direction: column;
+        text-align: center;
+        padding: 12px 16px;
+        gap: 4px;
+        font-size: 0.72rem;
+    }
+
+    /* --- Humor popup: tighter on mobile --- */
+    .humor-popup {
+        bottom: 14px;
+        right: 14px;
+        left: 14px;
+        max-width: 100%;
+        font-size: 0.85rem;
+        padding: 12px 14px;
+    }
+}
+
+/* Extra-small phones (< 480px) */
+@media (max-width: 480px) {
+    .brand-logo-text { font-size: 0.6rem; }
+    .tool-cards-grid { grid-template-columns: repeat(2, 1fr); }
+    .main-content    { padding: 12px; }
+}

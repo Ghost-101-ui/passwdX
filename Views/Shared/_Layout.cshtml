@@ -27,7 +27,9 @@
                     </div>
                 </a>
             </div>
-            <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <!-- Hamburger — only visible on mobile via CSS -->
+                <button id="mobileMenuBtn" class="mobile-menu-btn" title="Open Navigation" aria-label="Open Navigation">☰</button>
                 <button id="themeToggle" class="btn-toggle-pass" style="position: static; transform: none;" title="Toggle Theme">☀️</button>
                 <span class="pixel-badge">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -35,6 +37,9 @@
                 </span>
             </div>
         </header>
+
+        <!-- Mobile Overlay (darkens background when sidebar is open on phones) -->
+        <div id="mobileOverlay" class="mobile-overlay"></div>
 
         <!-- App Container -->
         <div class="app-container">
@@ -108,6 +113,24 @@
     <div id="humorPopupContainer"></div>
 
     <script src="~/Scripts/app.js"></script>
+    <script>
+        // Mobile sidebar drawer toggle
+        $('#mobileMenuBtn').on('click', function () {
+            $('.left-sidebar').toggleClass('sidebar-open');
+            $('#mobileOverlay').toggleClass('active');
+        });
+        $('#mobileOverlay').on('click', function () {
+            $('.left-sidebar').removeClass('sidebar-open');
+            $(this).removeClass('active');
+        });
+        // Close sidebar when a nav item is tapped on mobile
+        $(document).on('click', '.sidebar-item', function () {
+            if (window.innerWidth <= 768) {
+                $('.left-sidebar').removeClass('sidebar-open');
+                $('#mobileOverlay').removeClass('active');
+            }
+        });
+    </script>
     <script src="~/Scripts/analyzer.js"></script>
     <script src="~/Scripts/generator.js"></script>
     <script src="~/Scripts/challenge.js"></script>
