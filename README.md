@@ -1,9 +1,7 @@
 <p align="center">
-  <img src="wwwroot/images/icons/wizard.png" width="80" alt="Wizard" />
+  <img src="wwwroot/images/icons/wizard(2).svg" width="80" alt="Wizard" />
   &nbsp;&nbsp;&nbsp;
-  <span><b>🔐 P A S S W O R D X</b></span>
-  &nbsp;&nbsp;&nbsp;
-  <img src="wwwroot/images/icons/wizard.png" width="80" alt="Wizard" />
+  
 </p>
 
 <h1 align="center">PASSWORDX</h1>
